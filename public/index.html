@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail Excel Automation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Gmail Campaign Builder</h1>
+      <p>
+        Upload an Excel file (.xlsx/.xls/.csv) with at least an <strong>email</strong> column
+        and optionally a <strong>name</strong> column. Connect your Gmail account and send
+        personalized emails using placeholders like <code>{{name}}</code> and
+        <code>{{email}}</code>.
+      </p>
+
+      <section class="card">
+        <h2>1) Connect Gmail</h2>
+        <button id="connectBtn" type="button">Connect Gmail</button>
+        <span id="authStatus"></span>
+      </section>
+
+      <section class="card">
+        <h2>2) Preview Contacts</h2>
+        <form id="previewForm">
+          <input type="file" name="contactsFile" accept=".xlsx,.xls,.csv" required />
+          <button type="submit">Preview</button>
+        </form>
+        <pre id="previewOutput"></pre>
+      </section>
+
+      <section class="card">
+        <h2>3) Send Campaign</h2>
+        <form id="campaignForm">
+          <label>
+            Contacts file
+            <input type="file" name="contactsFile" accept=".xlsx,.xls,.csv" required />
+          </label>
+          <label>
+            Subject
+            <input
+              type="text"
+              name="subject"
+              placeholder="Hello {{name}}, quick update"
+              required
+            />
+          </label>
+          <label>
+            Message template
+            <textarea
+              name="messageTemplate"
+              rows="8"
+              placeholder="Hi {{name}},\n\nThis is an automated update for {{email}}."
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit">Send Emails</button>
+        </form>
+        <pre id="campaignOutput"></pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
